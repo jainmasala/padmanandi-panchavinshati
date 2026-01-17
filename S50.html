@@ -133,5 +133,10 @@
     </ul>
 </div>
 
+<script>
+let touchStartX=0,touchEndX=0;
+document.addEventListener('touchstart',e=>touchStartX=e.changedTouches[0].screenX);
+document.addEventListener('touchend',e=>{touchEndX=e.changedTouches[0].screenX;const n=parseInt(window.location.pathname.match(/S(\d+)\.html/)?.[1]||0);touchEndX<touchStartX-50&&n<60&&(window.location.href=`S${n+1}.html`);touchEndX>touchStartX+50&&n>1&&(window.location.href=`S${n-1}.html`);});
+</script>
 </body>
 </html>
